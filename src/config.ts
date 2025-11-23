@@ -16,6 +16,6 @@ export class Config {
   static isProductionMode = (NODE_ENV as NodeEnv) === NodeEnv.Production;
   static localhost = LOCALHOST ?? 'https://api.livi-pro.ru';
   static nodeEnv = NODE_ENV as NodeEnv;
-  static port = Cast.tryToInt(PORT) || 3003;
+  static port = Cast.tryToInt(PORT) || 80;
   static standNamespace = STAND_NAMESPACE;
 }
