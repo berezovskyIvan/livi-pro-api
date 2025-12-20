@@ -4,8 +4,8 @@ import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as packageJson from '../package.json';
-import { Config } from './config';
 import { AppModule } from './app.module';
+import { Config } from './config';
 import { GlobalExceptionFilter } from './infrastructure/filters/global-exception.filter';
 import { GlobalValidationPipe } from './infrastructure/pipes/global-validation.pipe';
 import { GLOBAL_VALIDATION_PIPE_OPTIONS } from './infrastructure/variables';
@@ -27,6 +27,7 @@ async function bootstrap() {
 
     app.useGlobalFilters(new GlobalExceptionFilter());
     app.useGlobalPipes(new GlobalValidationPipe(GLOBAL_VALIDATION_PIPE_OPTIONS));
+    app.enableCors();
 
     const options = new DocumentBuilder()
       .setTitle('Livi-pro - OpenAPI')
