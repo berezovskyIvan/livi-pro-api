@@ -11,7 +11,7 @@ export class MessagesMapper {
       return {
         id: Cast.toTrimmedString(message.messages_id),
         dialogId: Cast.toTrimmedString(message.messages_dialog_id),
-        createdAt: Cast.tryToDate(message.messages_created_at),
+        createdAt: message.messages_created_at ?? undefined,
         direction: Cast.toTrimmedString(message.messages_direction),
         senderRole: Cast.toTrimmedString(message.messages_sender_role),
         providerRaw: Cast.tryToTrimmedString(message.messages_provider_raw),
