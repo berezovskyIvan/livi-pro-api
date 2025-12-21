@@ -20,6 +20,7 @@ export class MessagesMapper {
         hasFooter: Cast.toBool(message.messages_has_footer),
         footerRaw: Cast.tryToTrimmedString(message.messages_footer_raw),
         footerParsed: Cast.tryToTrimmedString(message.messages_footer_parsed),
+        generatedAi: Cast.toBool(message.messages_generated_ai),
       };
     });
   }

@@ -83,4 +83,13 @@ export class ApiMessageResponse {
     type: 'string',
   })
   footerParsed?: string;
+
+  @Type(() => Boolean)
+  @IsBooleanDefault
+  @ApiProperty({
+    description: 'Факт генерации сообщения искуственным интеллектом',
+    type: 'boolean',
+    example: true,
+  })
+  generatedAi: boolean;
 }

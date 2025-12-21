@@ -90,5 +90,13 @@ export class MessagesEntity {
     nullable: true,
   })
   footerParsed: string | null;
+
+  @Column({
+    type: 'boolean',
+    name: 'generated_ai',
+    comment: 'Generated AI',
+    nullable: true,
+  })
+  generatedAi: boolean | null;
 }
 /* eslint-enable @typescript-eslint/member-ordering */

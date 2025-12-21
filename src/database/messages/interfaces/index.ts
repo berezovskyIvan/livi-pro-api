@@ -10,4 +10,5 @@ export interface IMessage {
   messages_has_footer: boolean | null;
   messages_footer_raw: null;
   messages_footer_parsed: null;
+  messages_generated_ai: boolean | null;
 }
