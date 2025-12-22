@@ -25,7 +25,7 @@ export class MessagesController {
     path: ':dialogId',
     response: ApiMessagesListResponse,
   })
-  fetchMessagesByDialog(
+  fetchMessagesByDialogId(
     @Param() { dialogId }: ApiDialogIdPayload,
     @Query() payload: ApiMessagesByDialogIdPayload,
   ): Promise<ApiMessagesListResponse> {
