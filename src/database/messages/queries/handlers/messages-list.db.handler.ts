@@ -16,6 +16,7 @@ export class MessagesListDbHandler implements IQueryHandler<MessagesListDbQuery>
   execute({ page, perPage }: MessagesListDbQuery): Promise<IMessage[]> {
     return this.messagesEntityRepository
       .createQueryBuilder('messages')
+      .orderBy('messages.createdAt', 'DESC')
       .offset((page - 1) * perPage)
       .limit(perPage)
       .getRawMany();

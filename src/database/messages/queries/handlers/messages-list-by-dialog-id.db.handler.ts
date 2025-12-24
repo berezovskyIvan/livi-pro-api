@@ -17,6 +17,7 @@ export class MessagesListByDialogIdDbHandler implements IQueryHandler<MessagesLi
     return this.messagesEntityRepository
       .createQueryBuilder('messages')
       .where(`messages.dialogId = :dialogId`, { dialogId })
+      .orderBy('messages.createdAt', 'DESC')
       .offset((page - 1) * perPage)
       .limit(perPage)
       .getRawMany();
