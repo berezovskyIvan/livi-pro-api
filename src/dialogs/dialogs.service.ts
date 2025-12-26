@@ -21,7 +21,6 @@ export class DialogsService {
       this.queryBus.execute(new DialogsListDbQuery(payload.page, payload.perPage)),
       this.queryBus.execute(new DialogsCountDbQuery()),
     ]);
-    console.log('dbDialogs', dbDialogs);
 
     const apiDialogs = this.dialogsMapper.dbToApiDialogs(dbDialogs);
     return {
