@@ -19,10 +19,13 @@ export class MessagesService {
     private readonly messagesMapper: MessagesMapper,
   ) {}
 
-  async getMessagesList(payload: ApiMessagesListPayload): Promise<ApiMessagesListResponse> {
+  async getMessagesByDialogId(
+    dialogId: ApiDialogIdPayload['dialogId'],
+    payload: ApiMessagesByDialogIdPayload,
+  ): Promise<ApiMessagesListResponse> {
     const [dbMessages, messagesCount] = await Promise.all([
-      this.queryBus.execute(new MessagesListDbQuery(payload.page, payload.perPage)),
-      this.queryBus.execute(new MessagesCountDbQuery()),
+      this.queryBus.execute(new MessagesListByDialogIdDbQuery(dialogId, payload.page, payload.perPage)),
+      this.queryBus.execute(new MessagesCountByDialogIdDbQuery(dialogId)),
     ]);
     const apiMessages = this.messagesMapper.dbToApiMessages(dbMessages);
 
@@ -35,13 +38,10 @@ export class MessagesService {
     };
   }
 
-  async getMessagesByDialogId(
-    dialogId: ApiDialogIdPayload['dialogId'],
-    payload: ApiMessagesByDialogIdPayload,
-  ): Promise<ApiMessagesListResponse> {
+  async getMessagesList(payload: ApiMessagesListPayload): Promise<ApiMessagesListResponse> {
     const [dbMessages, messagesCount] = await Promise.all([
-      this.queryBus.execute(new MessagesListByDialogIdDbQuery(dialogId, payload.page, payload.perPage)),
-      this.queryBus.execute(new MessagesCountByDialogIdDbQuery(dialogId)),
+      this.queryBus.execute(new MessagesListDbQuery(payload.page, payload.perPage)),
+      this.queryBus.execute(new MessagesCountDbQuery()),
     ]);
     const apiMessages = this.messagesMapper.dbToApiMessages(dbMessages);
 

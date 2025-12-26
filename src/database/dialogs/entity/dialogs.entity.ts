@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, JoinColumn, OneToMany } from 'typeorm';
+
+import { MessagesEntity } from '../../messages/entity/messages.entity';
 
 @Entity({ schema: 'public', name: 'dialogs' })
 export class DialogsEntity {
@@ -65,4 +67,11 @@ export class DialogsEntity {
     nullable: true,
   })
   updatedAt: Date | null;
+
+  @OneToMany(() => MessagesEntity, (message) => message.dialog)
+  @JoinColumn({
+    name: 'id',
+    referencedColumnName: 'dialogId',
+  })
+  messages!: MessagesEntity[];
 }

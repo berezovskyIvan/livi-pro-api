@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { MessagesEntity } from '../../entity/messages.entity';
 import { MessagesListDbQuery } from '../messages-list.db.query';
+
 import type { IMessage } from '../../interfaces';
 
 @QueryHandler(MessagesListDbQuery)

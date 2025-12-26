@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Config } from '../config';
+import { DialogsDbModule } from './dialogs/dialogs.db.module';
 import { MessagesDbModule } from './messages/messages.db.module';
 
 @Module({
@@ -24,6 +25,7 @@ import { MessagesDbModule } from './messages/messages.db.module';
       }),
     }),
     MessagesDbModule,
+    DialogsDbModule,
   ],
 })
 export class DatabaseModule {}

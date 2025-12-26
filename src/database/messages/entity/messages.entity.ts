@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
+
+import { DialogsEntity } from '../../dialogs/entity/dialogs.entity';
 
 /* eslint-disable @typescript-eslint/member-ordering */
 @Entity({ schema: 'public', name: 'messages' })
@@ -98,5 +100,12 @@ export class MessagesEntity {
     nullable: true,
   })
   generatedAi: boolean | null;
+
+  @ManyToOne(() => DialogsEntity, (dialog) => dialog.messages)
+  @JoinColumn({
+    name: 'dialog_id',
+    referencedColumnName: 'id',
+  })
+  dialog: DialogsEntity;
 }
 /* eslint-enable @typescript-eslint/member-ordering */
