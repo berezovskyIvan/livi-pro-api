@@ -22,6 +22,8 @@ export class DialogsMapper {
           id: Cast.toTrimmedString(dialog.message_id),
           createdAt: dialog.message_created_at ?? undefined,
           bodyMain: Cast.tryToTrimmedString(dialog.message_body_main),
+          senderRole: Cast.toTrimmedString(dialog.message_sender_role),
+          generatedAi: Cast.toBool(dialog.message_generated_ai),
         },
       };
     });

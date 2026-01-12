@@ -32,6 +32,8 @@ export class DialogsListDbHandler implements IQueryHandler<DialogsListDbQuery> {
         'message.id',
         'message.createdAt',
         'message.bodyMain',
+        'message.senderRole',
+        'message.generatedAi',
       ])
       .where(
         (qb) =>

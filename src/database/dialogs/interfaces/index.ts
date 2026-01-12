@@ -12,4 +12,6 @@ export interface IDialog {
   message_id: IMessage['messages_id'];
   message_created_at: IMessage['messages_created_at'];
   message_body_main: IMessage['messages_body_main'];
+  message_sender_role: IMessage['messages_sender_role'];
+  message_generated_ai: IMessage['messages_generated_ai'];
 }
