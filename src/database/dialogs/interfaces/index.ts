@@ -1,3 +1,4 @@
+import { IUser } from '../../users/interfaces';
 import type { IMessage } from '../../messages/interfaces';
 
 export interface IDialog {
@@ -15,8 +16,8 @@ export interface IDialog {
   message_sender_role: IMessage['messages_sender_role'];
   message_generated_ai: IMessage['messages_generated_ai'];
   message_user_id: IMessage['messages_user_id'];
-  user_phone: IMessage['user_phone'];
-  user_first_name: IMessage['user_first_name'];
-  user_middle_name: IMessage['user_middle_name'];
-  user_last_name: IMessage['user_last_name'];
+  user_phone: IUser['user_phone'];
+  user_first_name: IUser['user_first_name'];
+  user_middle_name: IUser['user_middle_name'];
+  user_last_name: IUser['user_last_name'];
 }
