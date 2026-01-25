@@ -8,4 +8,5 @@ export class ApiDialogLastMessageResponse extends PickType(ApiMessageResponse, [
   'bodyMain',
   'senderRole',
   'generatedAi',
+  'user',
 ]) {}

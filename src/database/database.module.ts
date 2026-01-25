@@ -6,6 +6,7 @@ import { Config } from '../config';
 import { ConsentsDbModule } from './consents/consents.db.module';
 import { DialogsDbModule } from './dialogs/dialogs.db.module';
 import { MessagesDbModule } from './messages/messages.db.module';
+import { UsersDbModule } from './users/users.db.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { MessagesDbModule } from './messages/messages.db.module';
     MessagesDbModule,
     DialogsDbModule,
     ConsentsDbModule,
+    UsersDbModule,
   ],
 })
 export class DatabaseModule {}

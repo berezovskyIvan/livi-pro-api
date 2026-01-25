@@ -2,7 +2,13 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsOptional } from 'class-validator';
 
-import { IsBooleanDefault, IsDateDefault, IsStringDefault } from '../../infrastructure/utils/class-validator-decorators';
+import {
+  IsBooleanDefault,
+  IsDateDefault,
+  IsStringDefault,
+  ValidateNestedDefault,
+} from '../../infrastructure/utils/class-validator-decorators';
+import { ApiUserResponse } from '../../user/models/api.user.response';
 
 export class ApiMessageResponse {
   @Type(() => String)
@@ -92,4 +98,12 @@ export class ApiMessageResponse {
     example: true,
   })
   generatedAi: boolean;
+
+  @ValidateNestedDefault()
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Информация о пользователе',
+    type: 'string',
+  })
+  user?: ApiUserResponse;
 }

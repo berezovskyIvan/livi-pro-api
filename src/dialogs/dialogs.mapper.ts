@@ -9,7 +9,7 @@ import type { IDialog } from '../database/dialogs/interfaces';
 export class DialogsMapper {
   dbToApiDialogs(dbDialogs: IDialog[]): ApiDialogResponse[] {
     return dbDialogs.map((dialog) => {
-      return {
+      const apiDialog: ApiDialogResponse = {
         id: Cast.toTrimmedString(dialog.dialogs_id),
         channelId: Cast.tryToTrimmedString(dialog.dialogs_channel_id),
         createdAt: dialog.dialogs_created_at ?? undefined,
@@ -26,6 +26,18 @@ export class DialogsMapper {
           generatedAi: Cast.toBool(dialog.message_generated_ai),
         },
       };
+
+      if (dialog.message_user_id) {
+        apiDialog.lastMessage.user = {
+          id: Cast.toTrimmedString(dialog.message_user_id),
+          phone: Cast.tryToTrimmedString(dialog.user_phone),
+          firstName: Cast.tryToTrimmedString(dialog.user_first_name),
+          middleName: Cast.tryToTrimmedString(dialog.user_middle_name),
+          lastName: Cast.tryToTrimmedString(dialog.user_last_name),
+        };
+      }
+
+      return apiDialog;
     });
   }
 }

@@ -14,4 +14,9 @@ export interface IDialog {
   message_body_main: IMessage['messages_body_main'];
   message_sender_role: IMessage['messages_sender_role'];
   message_generated_ai: IMessage['messages_generated_ai'];
+  message_user_id: IMessage['messages_user_id'];
+  user_phone: IMessage['user_phone'];
+  user_first_name: IMessage['user_first_name'];
+  user_middle_name: IMessage['user_middle_name'];
+  user_last_name: IMessage['user_last_name'];
 }

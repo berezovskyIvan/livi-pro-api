@@ -20,6 +20,7 @@ export class DialogsListDbHandler implements IQueryHandler<DialogsListDbQuery> {
       .createQueryBuilder('dialogs')
       .orderBy('dialogs.updatedAt', 'DESC')
       .leftJoin('dialogs.messages', 'message')
+      .leftJoin('message.user', 'user')
       .select([
         'dialogs.id',
         'dialogs.sessionKey',
@@ -34,6 +35,11 @@ export class DialogsListDbHandler implements IQueryHandler<DialogsListDbQuery> {
         'message.bodyMain',
         'message.senderRole',
         'message.generatedAi',
+        'message.userId',
+        'user.phone',
+        'user.firstName',
+        'user.middleName',
+        'user.lastName',
       ])
       .where(
         (qb) =>
