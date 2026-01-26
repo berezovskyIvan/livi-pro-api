@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { UsersEntity } from '../../users/entity/users.entity';
 
 @Entity({ schema: 'public', name: 'consent' })
 export class ConsentsEntity {
@@ -41,4 +42,11 @@ export class ConsentsEntity {
     nullable: false,
   })
   textId: number;
+
+  @ManyToOne(() => UsersEntity, (user) => user.consent)
+  @JoinColumn({
+    name: 'user_id',
+    referencedColumnName: 'id',
+  })
+  user: UsersEntity;
 }

@@ -16,6 +16,18 @@ export class ConsentsListDbHandler implements IQueryHandler<ConsentsListDbQuery>
   execute({ page, perPage }: ConsentsListDbQuery): Promise<IConsent[]> {
     return this.consentsEntityRepository
       .createQueryBuilder('consent')
+      .leftJoin('consent.user', 'user')
+      .select([
+        'consent.id',
+        'consent.userId',
+        'consent.consent',
+        'consent.textId',
+        'consent.createdAt',
+        'user.phone',
+        'user.firstName',
+        'user.middleName',
+        'user.lastName',
+      ])
       .orderBy('consent.createdAt', 'DESC')
       .offset((page - 1) * perPage)
       .limit(perPage)

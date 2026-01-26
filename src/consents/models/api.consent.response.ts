@@ -2,7 +2,14 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsOptional } from 'class-validator';
 
-import { IsBooleanDefault, IsDateDefault, IsIntDefault, IsStringDefault } from '../../infrastructure/utils/class-validator-decorators';
+import {
+  IsBooleanDefault,
+  IsDateDefault,
+  IsIntDefault,
+  IsStringDefault,
+  ValidateNestedDefault,
+} from '../../infrastructure/utils/class-validator-decorators';
+import { ApiUserResponse } from '../../user/models/api.user.response';
 
 export class ApiConsentResponse {
   @Type(() => Boolean)
@@ -26,8 +33,11 @@ export class ApiConsentResponse {
   @ApiProperty({ description: 'Идентификатор текста', type: 'integer', example: 2 })
   textId: number;
 
-  @Type(() => String)
-  @IsStringDefault()
-  @ApiProperty({ description: 'Идентификатор пользователя', type: 'string', example: '8a2c630e-e9a8-4283-a61f-7b0e83148b59' })
-  userId: string;
+  @ValidateNestedDefault()
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'Информация о пользователе',
+    type: 'string',
+  })
+  user?: ApiUserResponse;
 }

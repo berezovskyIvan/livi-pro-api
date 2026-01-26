@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryColumn, JoinColumn, OneToMany } from 'typeorm';
+import { ConsentsEntity } from '../../consents/entity/consents.entity';
 import { MessagesEntity } from '../../messages/entity/messages.entity';
 
 @Entity({ schema: 'public', name: 'users' })
@@ -113,4 +114,11 @@ export class UsersEntity {
     referencedColumnName: 'userId',
   })
   messages!: MessagesEntity[];
+
+  @OneToMany(() => ConsentsEntity, (consent) => consent.user)
+  @JoinColumn({
+    name: 'id',
+    referencedColumnName: 'userId',
+  })
+  consent!: ConsentsEntity[];
 }
