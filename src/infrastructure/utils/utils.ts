@@ -41,7 +41,7 @@ export class Utils {
     ? Example of enums
     {
       "push": "push",
-      "email": "email",
+      "mail": "mail",
       "phone": "phone",
       "address": "address",
       "code": "code"

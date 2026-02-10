@@ -4,9 +4,10 @@ import { ConsentsModule } from './consents/consents.module';
 import { DatabaseModule } from './database/database.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { HealthCheckModule } from './health-check/health-check.module';
+import { MailModule } from './mail/mail.module';
 import { MessagesModule } from './messages/messages.module';
 
 @Module({
-  imports: [DatabaseModule, HealthCheckModule, MessagesModule, DialogsModule, ConsentsModule],
+  imports: [DatabaseModule, HealthCheckModule, MailModule, MessagesModule, DialogsModule, ConsentsModule],
 })
 export class AppModule {}

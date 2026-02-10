@@ -21,6 +21,10 @@ const {
   DB_NAME,
   DB_USERNAME,
   DB_PASSWORD,
+  YANDEX_POSTBOX_HOST,
+  YANDEX_POSTBOX_PORT,
+  YANDEX_POSTBOX_USERNAME,
+  YANDEX_POSTBOX_PASS,
 } = process.env as DotenvParseOutput;
 
 export class Config {
@@ -37,4 +41,8 @@ export class Config {
   static nodeEnv = NODE_ENV as NodeEnv;
   static port = Cast.tryToInt(PORT) || 3003;
   static standNamespace = STAND_NAMESPACE;
+  static yandexPostboxHost = YANDEX_POSTBOX_HOST;
+  static yandexPostboxPass = YANDEX_POSTBOX_PASS;
+  static yandexPostboxPort = Cast.tryToInt(YANDEX_POSTBOX_PORT) || 465;
+  static yandexPostboxUsername = YANDEX_POSTBOX_USERNAME;
 }

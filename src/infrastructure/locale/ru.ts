@@ -8,7 +8,7 @@ export class Locale {
     isNotDate: 'Не является датой',
     isNotDateString: 'Не является строкой-датой',
     isNotDefined: 'Поле должно быть определено',
-    isNotEmail: 'Некорректный email',
+    isNotEmail: 'Некорректный mail',
     isNotEmpty: 'Поле не должно быть пустым',
     isNotInt: 'Поле должно быть целым числом',
     isNotNumber: 'Поле должно быть числом',
