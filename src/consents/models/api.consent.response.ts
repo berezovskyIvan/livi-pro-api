@@ -6,7 +6,6 @@ import {
   IsBooleanDefault,
   IsDateDefault,
   IsIntDefault,
-  IsStringDefault,
   ValidateNestedDefault,
 } from '../../infrastructure/utils/class-validator-decorators';
 import { ApiUserResponse } from '../../user/models/api.user.response';

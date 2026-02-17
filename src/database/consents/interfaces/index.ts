@@ -10,4 +10,5 @@ export interface IConsent {
   user_first_name: IUser['user_first_name'];
   user_middle_name: IUser['user_middle_name'];
   user_last_name: IUser['user_last_name'];
+  user_user_identity: IUser['user_user_identity'];
 }

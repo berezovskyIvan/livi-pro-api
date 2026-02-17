@@ -27,6 +27,7 @@ export class ConsentsListDbHandler implements IQueryHandler<ConsentsListDbQuery>
         'user.firstName',
         'user.middleName',
         'user.lastName',
+        'user.userIdentity',
       ])
       .orderBy('consent.createdAt', 'DESC')
       .offset((page - 1) * perPage)

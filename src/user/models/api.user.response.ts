@@ -1,7 +1,8 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsOptional } from 'class-validator';
-import { IsStringDefault } from '../../infrastructure/utils/class-validator-decorators';
+
+import { IsIntDefault, IsStringDefault } from '../../infrastructure/utils/class-validator-decorators';
 
 export class ApiUserResponse {
   @Type(() => String)
@@ -44,4 +45,22 @@ export class ApiUserResponse {
     type: 'string',
   })
   lastName?: string;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsIntDefault
+  @ApiPropertyOptional({
+    description: 'Идентификатор пользователя в соц. сети',
+    type: 'integer',
+  })
+  providerUserId?: number;
+
+  @IsOptional()
+  @Type(() => String)
+  @IsStringDefault()
+  @ApiPropertyOptional({
+    description: 'Никнейм пользователя в соц. сети',
+    type: 'string',
+  })
+  providerUsername?: string;
 }
